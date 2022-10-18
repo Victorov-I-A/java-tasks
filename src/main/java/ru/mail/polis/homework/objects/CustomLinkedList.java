@@ -42,8 +42,8 @@ public class CustomLinkedList implements Iterable<Integer> {
         } else {
             head = nextNode;
         }
-        size++;
         modCount++;
+        size++;
     }
 
     /**
@@ -54,13 +54,13 @@ public class CustomLinkedList implements Iterable<Integer> {
      */
     public int get(int index) throws IndexOutOfBoundsException {
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException(index);
+            throw new IndexOutOfBoundsException();
         }
         Node node = head;
-       for (int i = 0; i < index; i++) {
-           node = node.next;
-       }
-       return node.value;
+        for (int i = 0; i < index; i++) {
+            node = node.next;
+        }
+        return node.value;
     }
 
     /**
@@ -75,10 +75,10 @@ public class CustomLinkedList implements Iterable<Integer> {
      */
     public void add(int i, int value) throws IndexOutOfBoundsException {
         if (i < 0 || i > size) {
-            throw new IndexOutOfBoundsException(i);
+            throw new IndexOutOfBoundsException();
         }
-        size++;
         modCount++;
+        size++;
         Node node = head;
         if (i == 0) {
             head = new Node(value);
@@ -104,10 +104,10 @@ public class CustomLinkedList implements Iterable<Integer> {
      */
     public void removeElement(int index) throws IndexOutOfBoundsException {
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException(index);
+            throw new IndexOutOfBoundsException();
         }
-        size--;
         modCount++;
+        size--;
         Node node = head;
         if (index == 0) {
             head = head.next;
@@ -135,13 +135,13 @@ public class CustomLinkedList implements Iterable<Integer> {
             values[i] = node.value;
             node = node.next;
         }
+        modCount++;
         head = new Node(values[0]);
         node = head;
         for (int i = 1; i < values.length; i++) {
             node.setNext(new Node(values[i]));
             node = node.next;
         }
-        modCount++;
     }
 
     /**
